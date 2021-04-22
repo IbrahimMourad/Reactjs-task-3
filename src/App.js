@@ -1,30 +1,42 @@
 import React from "react";
 import Profile from "./components/Profile/Profile";
 import "./App.css";
-import PropTypes from "prop-types";
 
-function App() {
-  const handleName = (fullName) => {
-    alert(fullName);
+class App extends React.Component {
+  state = {
+    show: false,
   };
-  return (
-    <div className="App">
-      <Profile
-        fullName="Ibrahim"
-        bio="lorem"
-        profession="xxx"
-        handleName={handleName}
-      >
-        https://via.placeholder.com/150C/O https://placeholder.com/
-      </Profile>
-    </div>
-  );
+  content() {
+    if (this.state.show === true) {
+      return (
+        <Profile
+          fullName="Ibrahim"
+          bio="lorem"
+          profession="xxx"
+          handleName={this.handleName}
+        >
+          https://via.placeholder.com/150C/O https://placeholder.com/
+        </Profile>
+      );
+    } else return null;
+  }
+
+  handleName(fullName) {
+    alert(fullName);
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <button onClick={() => this.setState({ show: !this.state.show })}>
+          Toggle Profile
+        </button>
+        <br />
+        <br />
+        {this.content()}
+      </div>
+    );
+  }
 }
-Profile.PropTypes = {
-  fullName: PropTypes.string,
-  bio: PropTypes.string,
-  profession: PropTypes.string,
-  children: PropTypes.string,
-  handleName: PropTypes.func,
-};
+
 export default App;

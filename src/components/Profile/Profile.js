@@ -18,9 +18,6 @@ Profile.defaultProps = {
   bio: "zzz",
   profession: "ccc",
   children: " https://via.placeholder.com/150C/O https://placeholder.com/",
-  handleName: (fullName) => {
-    alert(fullName);
-  },
 };
 
 export default Profile;
